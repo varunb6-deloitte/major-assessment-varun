@@ -1,0 +1,70 @@
+{
+	"info": {
+		"_postman_id": "c92a7e87-60fc-4007-b278-4b40916789b2",
+		"name": "Integration-Workspace-Varun",
+		"description": "Postman Collection for Major Assessment Part A - Integration",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Milestone1-Varun",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/milestone1",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"milestone1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Milestone2-Varun",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"post_id\": 2003\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/milestone2",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"milestone2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Milestone3-Varun",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/milestone3",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"milestone3"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

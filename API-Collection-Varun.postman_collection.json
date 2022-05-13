@@ -1,0 +1,205 @@
+{
+	"info": {
+		"_postman_id": "08f9d9bd-e3ab-4e5e-aff2-78d20f910a2d",
+		"name": "API-Collection-Varun",
+		"description": "Postman Collection for Major Assignment Part B - API Testing\n\nAdded common test cases for testing all requests after their execution",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Milestone3 - Varun",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Id 40 has userId=4\", function() {\r",
+							"    pm.expect(pm.response.json().filter(item => item.id == 40)[0].userId).to.equal(4)\r",
+							"})\r",
+							"\r",
+							"pm.test(\"Every title field is string\", function() {\r",
+							"    pm.response.json().forEach(item => pm.expect(item.title).to.be.a('string'))\r",
+							"})\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{jsonplaceholder}}/posts",
+					"host": [
+						"{{jsonplaceholder}}"
+					],
+					"path": [
+						"posts"
+					]
+				},
+				"description": "Request for Milestone 3 in Part B - API Testing.\n\nBase URL is saved in environment variable with \"jsonplaceholder\" name\n\nAdded 2 test cases for testing:\n\n1.  Element with ID 40 has userId=4\n2.  Every title field is of type String"
+			},
+			"response": []
+		},
+		{
+			"name": "Milestone4 - Varun",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"email matches with response\", function() {\r",
+							"    pm.expect(pm.response.json().email).to.equal(pm.environment.get('email'))\r",
+							"})\r",
+							"\r",
+							"pm.test(\"first_name matches with response\", function() {\r",
+							"    pm.expect(pm.response.json().first_name).to.equal(pm.environment.get('first_name'))\r",
+							"})\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pm.environment.set('email', 'amith.k@reqres.in')\r",
+							"pm.environment.set('first_name', 'Amit')\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"{{email}}\",\r\n    \"first_name\": \"{{first_name}}\",\r\n    \"last_name\": \"K\",\r\n    \"avatar\": \"\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{reqres}}/users",
+					"host": [
+						"{{reqres}}"
+					],
+					"path": [
+						"users"
+					]
+				},
+				"description": "Request for Milestone 4 in Part B - API Testing.\n\nBase URL is saved in environment variable with \"reqres\" name\n\nSetting email and first_name values in environment variable\n\nAdded 2 test cases for testing:\n\n1.  email value in response matches with email value sent in request\n2.  first_name value in response matches with first_name value sent in request"
+			},
+			"response": []
+		},
+		{
+			"name": "Milestone5 - Varun",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"first_name is updated correctly\", function() {\r",
+							"    var request = JSON.parse(pm.request.body)\r",
+							"    var response = pm.response.json()\r",
+							"    pm.expect(response.first_name).to.equal(request.first_name)\r",
+							"    pm.environment.set('first_name', response.first_name)\r",
+							"})\r",
+							"\r",
+							"pm.test(\"last_name is updated correctly\", function() {\r",
+							"    var request = JSON.parse(pm.request.body)\r",
+							"    var response = pm.response.json()\r",
+							"    pm.expect(response.last_name).to.equal(request.last_name)\r",
+							"    pm.environment.set('last_name', response.last_name)\r",
+							"})\r",
+							"\r",
+							"pm.test(\"email is updated correctly\", function() {\r",
+							"    var request = JSON.parse(pm.request.body)\r",
+							"    var response = pm.response.json()\r",
+							"    pm.expect(response.email).to.equal(request.email)\r",
+							"    pm.environment.set('last_name', response.email)\r",
+							"})\r",
+							"\r",
+							"pm.test(\"updatedAt field is present in response\", function() {\r",
+							"    pm.response.to.have.jsonBody(\"updatedAt\")\r",
+							"})\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"amith.kumar@reqres.in\",\r\n    \"first_name\": \"Amith\",\r\n    \"last_name\": \"Kumar\",\r\n    \"avatar\": \"\",\r\n    \"id\": \"664\",\r\n    \"createdAt\": \"2022-02-15T15:18:16.933Z\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{reqres}}/users/",
+					"host": [
+						"{{reqres}}"
+					],
+					"path": [
+						"users",
+						""
+					]
+				},
+				"description": "Request for Milestone 5 in Part B - API Testing.\n\nBase URL is saved in environment variable with \"reqres\" name\n\nAdded 4 test cases for testing:\n\n1.  email value sent in request is same as email value in response\n2.  first_name value sent in request is same as first_name value in response\n3.  last_name value sent in request is same as last_name value in response"
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"pm.test(\"Status code is correct\", function () {",
+					"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+					"});",
+					"",
+					"pm.test('Content-Type is \"application/json\"', function() {",
+					"    pm.response.to.be.header(\"Content-Type\", \"application/json; charset=utf-8\")",
+					"})",
+					"",
+					"pm.test(\"Response time is less than 1000ms\", function () {",
+					"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+					"});",
+					""
+				]
+			}
+		}
+	]
+}
